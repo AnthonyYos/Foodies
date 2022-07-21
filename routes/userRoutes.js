@@ -11,8 +11,17 @@ router
   .get(userController.register_get)
   .post(wrapAsync(userController.register_post));
 
-router.route('/login').get(userController.login_get);
-// .post(passport.authenticate('local',{ failureRedirect: '/login', failureMessage: true }), userController.login_post); // passport.authenticate() middleware invokes req.login()
+router
+  .route('/login')
+  .get(userController.login_get)
+  .post(
+    passport.authenticate('local', {
+      failureRedirect: '/login',
+      failureMessage: true,
+      successRedirect: '/logininfo',
+    }),
+    userController.login_post
+  ); // passport.authenticate() middleware invokes req.login()
 
 router.get('/logout', userController.logout);
 

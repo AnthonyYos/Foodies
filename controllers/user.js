@@ -37,7 +37,12 @@ const login_post = (req, res) => {
 };
 
 const logout = (req, res) => {
-  res.render('user/register');
+  req.logout(err => {
+    if (err) return next(err);
+  });
+  const redirectUrl = req.session.returnTo || '/';
+  req.flash('success', 'Logged Out');
+  res.redirect('/');
 };
 
 module.exports = {
