@@ -1,0 +1,57 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+    <h1></h1>
+    <div class="col-6 offset-3">
+        <form action="/restaurants" method="post" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="restaurant[name]" required>
+            </div>
+            <div class="row mb-3">
+                <fieldset class="form-group">
+                    <legend class="col-form-label">Prices:</legend>
+                    <div class="form-check">
+                        <input type="radio" id="first-rate1" name="restaurant[cost]" value="Low" />
+                        <label for="first-rate1" title="Cheap">Cheap</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="first-rate2" name="restaurant[cost]" value="Med" />
+                        <label for="first-rate2" title="Moderate">Moderate</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="first-rate3" name="restaurant[cost]" value="High" />
+                        <label for="first-rate3" title="Expensive">Expensive</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="restaurant[description]"
+                    required></textarea>
+            </div>
+            <div class="mb-3"><button class="btn btn-success">Submit</button></div>
+        </form>
+    </div>
+</div>
+
+
+name: {
+type: String,
+required: true,
+},
+cost: {
+type: String,
+enum: ['Low', 'Med', 'High'],
+},
+description: {
+type: String,
+required: true,
+},
+foodType: {
+type: String,
+},
+reviews: [
+{
+type: mongoose.Schema.Types.ObjectId,
+ref: 'Review',
+},
