@@ -11,6 +11,7 @@ const register_post = async (req, res) => {
     if (password !== passwordConfirm) throw error;
     const user = new User({ email, username });
     user.roles.push('user');
+    user.isAdmin = false;
     // passport-local-mongoose method(plugged in user model)
     const registeredUser = await User.register(user, password);
     // passport method
