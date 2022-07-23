@@ -26,9 +26,11 @@
                         </li>
                         <li class="list-group-item text-muted">Submitted by: <%= restaurant.author.username%></li>
                     </ul>
+                    <%if(currentUser && (restaurant.author.equals(currentUser._id) || currentUser.isAdmin)){%>
                     <form action="/restaurants/<%=restaurant.id%>/?_method=DELETE" method="post">
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                    <%}%>
                 </div>
             </div>
         </div>

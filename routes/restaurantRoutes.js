@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const wrapAsync = require('../utils/wrapAsync'); // use for any controller methods using async
 const restaurantController = require('../controllers/restaurant');
-const { isLoggedIn, isPosterOrAdmin } = require('../utils/userPermissions');
+const { isLoggedIn, isPosterOrAdmin } = require('../middleware/userPermissions');
+const wrapAsync = require('../middleware/wrapAsync'); // use for any controller methods using async
 
 // index, create_get, create_post, details_get, edit_get, edit_put, delete
 

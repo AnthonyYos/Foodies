@@ -17,7 +17,6 @@ const methodOverride = require('method-override');
 
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const userRoutes = require('./routes/userRoutes');
-const { isLoggedIn } = require('./utils/userPermissions');
 
 // Express app
 const app = express();
