@@ -13,9 +13,8 @@ const RestaurantSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  foodType: {
-    type: String,
-  },
+  cuisine: String,
+  image: String,
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,

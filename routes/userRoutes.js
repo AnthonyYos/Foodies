@@ -18,7 +18,7 @@ router
     passport.authenticate('local', {
       failureRedirect: '/login',
       failureMessage: true,
-      successRedirect: '/logininfo',
+      successRedirect: '/restaurants',
     }),
     userController.login_post
   ); // passport.authenticate() middleware invokes req.login()

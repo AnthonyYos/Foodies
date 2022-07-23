@@ -1,0 +1,49 @@
+<% layout('/layouts/boilerplate') %>
+
+<body>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="/restaurants/<%=restaurant._id%>?_method=PUT " method="post" novalidate
+                class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="restaurant[name]"
+                        value="<%= restaurant.name%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="cuisine">Cuisine</label>
+                    <input class="form-control" type="text" id="cuisine" name="restaurant[cuisine]"
+                        value="<%= restaurant.cuisine%>" required>
+                </div>
+                <div class="row mb-3">
+                    <fieldset class="form-group">
+                        <legend class="col-form-label">Prices:</legend>
+                        <div class="form-check">
+                            <input type="radio" id="prices" name="restaurant[cost]" value="Low" required />
+                            <label for="prices" title="Cheap">Cheap</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="prices" name="restaurant[cost]" value="Med" />
+                            <label for="prices" title="Moderate">Moderate</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="prices" name="restaurant[cost]" value="High" />
+                            <label for="prices" title="Expensive">Expensive</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image Url: </label>
+                    <input class="form-control" type="text" id="image" name="restaurant[image]"
+                        value="<%= restaurant.image %> " required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="restaurant[description]"
+                        required><%= restaurant.description%></textarea>
+                </div>
+                <div class="mb-3"><button class="btn btn-success">Submit</button></div>
+            </form>
+        </div>
+    </div>
+</body>

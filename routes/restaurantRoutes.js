@@ -16,7 +16,7 @@ router.route('/add').get(isLoggedIn, restaurantController.restaurant_create_get)
 router
   .route('/:id')
   .get(wrapAsync(restaurantController.restaurant_details))
-  .put(isLoggedIn, wrapAsync(restaurantController.restaurant_edit_put))
+  .put(isLoggedIn, isPosterOrAdmin, wrapAsync(restaurantController.restaurant_edit_put))
   .delete(isLoggedIn, isPosterOrAdmin, wrapAsync(restaurantController.restaurant_delete));
 
 router.route('/:id/edit').get(wrapAsync(restaurantController.restaurant_edit_get));
