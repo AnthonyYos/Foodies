@@ -17,6 +17,7 @@ const methodOverride = require('method-override');
 
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const userRoutes = require('./routes/userRoutes');
+//--------------------------------------------------End of Imports--------------------------------------------------//
 
 // Express app
 const app = express();
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 });
+//--------------------------------------------------End of Middleware-----------------------------------------------//
 
 // Routes
 app.get('/', (req, res) => res.render('home'));

@@ -4,34 +4,37 @@
     <div class="row">
         <div class="col-6">
             <div class="card mb-3">
-                <img src="<%= restaurant.image%>" class="card-img-top img-fluid" alt="...">
+                <img src="<%= restaurant.image%>" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h3 class="card-title"><%= restaurant.name %> </h3>
-                    <p class="card-text"><%= restaurant.description %> </p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><%=restaurant.cuisine%></li>
-                        <li class="list-group-item">Prices:
-                            <% switch (restaurant.cost) {
+                    <h5 class="card-title"><%= restaurant.name%></h5>
+                    <p class="card-text"><%= restaurant.description%></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cuisine: Pizza</li>
+                    <li class="list-group-item">Prices:
+                        <% switch (restaurant.cost) {
                         case "Low": %>
-                            $
-                            <% break;
+                        $
+                        <% break;
                         case "Med": %>
-                            $$
-                            <% break;
+                        $$
+                        <% break;
                         case "High": %>
-                            $$$
-                            <% break;
+                        $$$
+                        <% break;
                         default:
                         break; } %>
-                        </li>
-                        <li class="list-group-item text-muted">Submitted by: <%= restaurant.author.username%></li>
-                    </ul>
-                    <%if(currentUser && (restaurant.author.equals(currentUser._id) || currentUser.isAdmin)){%>
-                    <form action="/restaurants/<%=restaurant.id%>/?_method=DELETE" method="post">
+                    </li>
+                    <li class="list-group-item text-muted">Submitted by: <%= restaurant.author.username%></li>
+                </ul>
+                <%if(currentUser && (restaurant.author.equals(currentUser._id) || currentUser.isAdmin)){%>
+                <div class="card-body">
+                    <a class="btn btn-primary" href="/restaurants/<%=restaurant.id%>/edit">Edit</a>
+                    <form class='d-inline' action="/restaurants/<%=restaurant.id%>/?_method=DELETE" method="post">
                         <button class="btn btn-danger">Delete</button>
                     </form>
-                    <%}%>
                 </div>
+                <%}%> 
             </div>
         </div>
     </div>
